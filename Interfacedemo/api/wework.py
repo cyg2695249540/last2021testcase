@@ -5,11 +5,18 @@
 # @Time     : 2021/4/14 16:21
 import requests
 
+from Interfacedemo.api.base_api import BaseApi
 
-class WeWork():
+
+class WeWork(BaseApi):
     def get_token(self):
         corpid = "ww0ae123b953d2b956"
         corpsecret = "6EnVDtGal3C_RTpEnNbqr4ynHc7AZ--O3MJg-d7E0Bo"
         token_url = f"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={corpid}&corpsecret={corpsecret}"
-        r = requests.get(url=token_url)
-        return r.json()["access_token"]
+        req = {
+            "method": "get",
+            "url": token_url
+        }
+        r=self.send_and_requests(req)
+        self.token = r.json()["access_token"]
+        return self.token
