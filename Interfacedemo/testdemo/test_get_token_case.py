@@ -6,7 +6,9 @@
 import pytest
 import requests
 
-
+"""
+执行测试gettoken的测试用例
+"""
 class TestToken:
     @pytest.mark.parametrize(
         "corpid,corpsecret,errmsg", [("ww0ae123b953d2b956", "6EnVDtGal3C_RTpEnNbqr4ynHc7AZ--O3MJg-d7E0Bo", "ok"),
