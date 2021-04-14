@@ -4,8 +4,16 @@
 # @Author   : Pluto.
 # @Time     : 2021/4/14 17:15
 import requests
+from jsonpath import jsonpath
+from jsonschema import validate
 
 
 class BaseApi:
-    def send_and_requests(self, req:dict):
+    def send_and_requests(self, req: dict):
         return requests.request(**req)
+
+    def base_jsonpath(self, obj, expr):
+        return jsonpath(obj, expr)
+
+    def base_jsonschema(self,instance, schema):
+        return validate(instance, schema)

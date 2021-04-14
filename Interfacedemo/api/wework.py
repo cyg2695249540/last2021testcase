@@ -9,10 +9,9 @@ from Interfacedemo.api.base_api import BaseApi
 
 
 class WeWork(BaseApi):
-    def get_token(self):
+    def get_token(self,department_secret):
         corpid = "ww0ae123b953d2b956"
-        corpsecret = "6EnVDtGal3C_RTpEnNbqr4ynHc7AZ--O3MJg-d7E0Bo"
-        token_url = f"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={corpid}&corpsecret={corpsecret}"
+        token_url = f"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={corpid}&corpsecret={department_secret}"
         req = {
             "method": "get",
             "url": token_url
