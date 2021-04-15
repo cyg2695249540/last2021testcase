@@ -33,9 +33,9 @@ class TestMember:
         username = self.member.base_jsonpath(memberdetail, "$..name")[0]
         assert username == name
 
-    @allure.feature("添加成员")
+    @allure.feature("更新成员")
     @pytest.mark.flaky(reruns=1)
-    @pytest.mark.parametrize("name, userid", [("张三1", "zhangsan")], ids={"添加成员"})
+    @pytest.mark.parametrize("name, userid", [("张三1", "zhangsan")], ids={"更新成员"})
     def test_update_member(self, name, userid):
         r = self.member.update_member(name)
         backjson = {
