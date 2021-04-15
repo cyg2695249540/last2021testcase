@@ -49,7 +49,7 @@ class TestMember:
 
     @allure.story("删除成员")
     @pytest.mark.flaky(reruns=1)
-    @pytest.mark.parametrize("userid,name,department_id", [("zhangsan", "张三1", 1)], ids={"delete member"})
+    @pytest.mark.parametrize("userid,name,department_id", [("zhangsan", "张三1", 1)], ids={"删除成员"})
     def test_delete_member(self, userid, name, department_id):
         r = self.member.delete_member(userid)
         backjson = {
@@ -63,7 +63,7 @@ class TestMember:
 
     @allure.story("读取成员")
     @pytest.mark.flaky(reruns=1)
-    @pytest.mark.parametrize("userid", [("zhangsan")], ids={"get memberdetail"})
+    @pytest.mark.parametrize("userid", [("zhangsan")], ids={"读取成员"})
     def test_get_memberdetail(self, userid):
         # backjson = self.member.get_memberdetail(userid)
         # schemajson = json.load(open("./json_schema/get_memberdetail_schema.json", encoding="utf-8"))
@@ -72,7 +72,8 @@ class TestMember:
 
     @allure.story("获取部门成员")
     @pytest.mark.flaky(reruns=1)
-    def test_get_department_member_list(self):
+    @pytest.mark.parametrize("userid", [("zhangsan")], ids={"获取部门成员"})
+    def test_get_department_member_list(self,userid):
         # backjson = self.member.get_department_member_list()
         # schemajson = json.load(open("./json_schema/get_department_member_list_schema.json", encoding="utf-8"))
         # self.member.base_jsonschema(backjson, schemajson)
