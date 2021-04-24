@@ -15,5 +15,5 @@ class BaseApi:
     def base_jsonpath(self, obj, expr):
         return jsonpath(obj, expr)
 
-    def base_jsonsechema(self, instance, schema):
+    def base_jsonschema(self, instance, schema):
         return validate(instance, schema)

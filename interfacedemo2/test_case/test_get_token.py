@@ -9,11 +9,13 @@ import yaml
 
 from interfacedemo2.api.base_api import BaseApi
 
+
 def getdatas():
-    datas=yaml.safe_load(open("../datas/datas.yaml",encoding="utf-8"))
+    datas = yaml.safe_load(open("../datas/datas.yaml", encoding="utf-8"))
     demo = datas["demo"]
     case = datas["case"]
     return demo, case
+
 
 @allure.feature("获取get_token模块")
 class TestGetToken:
@@ -22,8 +24,8 @@ class TestGetToken:
 
     @allure.story("geteoken测试")
     @pytest.mark.flaky(reruns=1)
-    @pytest.mark.parametrize("corpid,corpsecret,errmsg",getdatas()[0],ids=getdatas()[1])
-    def test_get_token(self,corpid,corpsecret,errmsg):
+    @pytest.mark.parametrize("corpid,corpsecret,errmsg", getdatas()[0], ids=getdatas()[1])
+    def test_get_token(self, corpid, corpsecret, errmsg):
         token_url = f"https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid={corpid}&corpsecret={corpsecret}"
         req = {
             "method": "get",
