@@ -33,7 +33,7 @@ class TestAddmeber:
 
     @allure.story("添加成员")
     @pytest.mark.flaky(reruns=1)
-    @pytest.mark.parametrize("username,acctid,phone,result", get_datas()[0], get_datas()[1])
+    @pytest.mark.parametrize("username,acctid,phone,result", get_datas()[0], ids=get_datas()[1])
     def test_addmemer(self, username, acctid, phone, result):
         getresult = self.main.goto_addmember_page().addusername(username).addacctid(acctid).addphone(
             phone).save_member().get_result_text()
@@ -43,7 +43,7 @@ class TestAddmeber:
 
     @allure.story("添加成员")
     @pytest.mark.flaky(reruns=1)
-    @pytest.mark.parametrize("username,acctid,phone", get_datas()[2], get_datas()[3])
+    @pytest.mark.parametrize("username,acctid,phone", get_datas()[2], ids=get_datas()[3])
     def test_addmember_fail(self, username, acctid, phone):
         namelist = self.main.goto_addmember_page().addusername(username).addacctid(acctid).addphone(
             phone).cancel_member().get_mamberlist()
@@ -51,7 +51,7 @@ class TestAddmeber:
 
     @allure.story("通讯录添加成员")
     @pytest.mark.flaky(reruns=1)
-    @pytest.mark.parametrize("username,acctid,phone,result", get_datas()[4], get_datas()[5])
+    @pytest.mark.parametrize("username,acctid,phone,result", get_datas()[4], ids=get_datas()[5])
     def test_contact_member(self, username, acctid, phone, result):
         getresult = self.main.goto_contact_page().goto_addmember_page().addusername(username).addacctid(
             acctid).addphone(phone).save_member().get_result_text()
@@ -61,9 +61,9 @@ class TestAddmeber:
 
     @allure.story("删除成员")
     @pytest.mark.flaky(reruns=1)
-    @pytest.mark.parametrize("username,result", get_datas()[6], get_datas()[7])
+    @pytest.mark.parametrize("username,result", get_datas()[6], ids=get_datas()[7])
     def test_delete_member(self, username, result):
-        getresult = self.main.goto_contact_page().delete_member_page(username).get_result_text()
-        assert result == getresult
+        getresult = self.main.goto_contact_page().deletemember(username).get_result_text()
+        assert getresult == result
         namelist = self.main.goto_contact_page().get_mamberlist()
         assert username not in namelist

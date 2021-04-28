@@ -47,5 +47,5 @@ class BasePage:
 
     def get_result_text(self):
         sleep(1)
-        get_result = (By.ID, "js_tips")
-        return self.find_and_get_text(get_result)
+        getresult = (By.CSS_SELECTOR, ".success")
+        return self.find_and_get_text(getresult)

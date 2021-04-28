@@ -33,7 +33,7 @@ class ContactPage(BasePage):
         eles = self.finds(self._member_list)
         return [name.text for name in eles]
 
-    def delete_member_page(self, username):
+    def deletemember(self, username):
         deletename_checkbox = (By.XPATH, f"//*[@title='{username}']/..//*[@class='ww_checkbox']")
         eles = self.finds(self._member_list)
         namelist = [name.text for name in eles]
@@ -43,7 +43,7 @@ class ContactPage(BasePage):
             self.find_and_click(self._delete_chick)
         else:
             print(f"不存在成员{username}")
-            return self
+        return self
 
     def goto_addepartment_page(self):
         from seleniumdemo.pages.department_page import DepartmentPage
